@@ -1,6 +1,6 @@
 package org.devops
 
 //Print Context
-def PrintMes(content)(
+def PrintMes(content){
     println(content)
-)
+}
