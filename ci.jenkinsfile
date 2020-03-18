@@ -5,8 +5,8 @@ pipeline{
         stage("build"){
             steps{
                 script{
-                    mvnHome == tool "m2"
-                    sh "${mvnHome/bin/mv -v"
+                    mvnHome = tool "m2"
+                    sh "${mvnHome}/bin/mv -v"
                 }
             }
         }
