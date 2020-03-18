@@ -1,0 +1,14 @@
+pipeline{
+    agent{ node {label "ryan-jnlp"}}
+
+    stages{
+        stage("build"){
+            steps{
+                script{
+                    mvnHome == tool "m2"
+                    sh "${mvnHome/bin/mv -v"
+                }
+            }
+        }
+    }
+}
