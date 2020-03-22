@@ -6,6 +6,7 @@
 def build = new org.devops.build()
 def deploy = new org.devops.deploy()
 def tools = new org.devops.tools()
+def sonar = new org.devops.sonarqube()
 
 String buildType = "${env.buildType}"
 String buildShell = "${env.buildShell}"
