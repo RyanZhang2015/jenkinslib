@@ -4,9 +4,9 @@ package org.devops
 //封装HTTP
 
 def HttpReq(reqType,reqUrl,reqBody){
-    def sonarServer = "http://192.168.1.200:30090/api"
+    def sonarServer = "http://192.168.3.36:9000/api"
    
-    result = httpRequest authentication: 'sonar-admin-user',
+    result = httpRequest authentication: 'sonar-admin',
             httpMode: reqType, 
             contentType: "APPLICATION_JSON",
             consoleLogResponseBody: true,
