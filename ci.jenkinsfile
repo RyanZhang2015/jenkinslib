@@ -8,6 +8,7 @@ def deploy = new org.devops.deploy()
 def tools = new org.devops.tools()
 def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarqubeapi()
+def nexus = new org.devops.nexus()
 
 String buildType = "${env.buildType}"
 String buildShell = "${env.buildShell}"
@@ -37,6 +38,8 @@ pipeline{
                 script{
                     tools.PrintMes("执行打包","green")
                     build.Build(buildType,buildShell)
+
+                    nexus.main("maven")
                 }
             }
         }
