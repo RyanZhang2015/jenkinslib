@@ -39,7 +39,7 @@ pipeline{
                     tools.PrintMes("执行打包","green")
                     build.Build(buildType,buildShell)
 
-                    nexus.main("maven")
+                    nexus.main("nexus")
                 }
             }
         }
