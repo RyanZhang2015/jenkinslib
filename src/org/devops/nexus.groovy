@@ -53,7 +53,7 @@ def main(uploadType){
     if ("${uploadType}" == "maven"){
         MavenUpload()
     } else if ("${uploadType}" == "nexus") {
-        env.repoName = "maven-hostd"
+        env.repoName = "maven-snapshots"
         env.filePath = "target/${jarName}"
         println("nexus upload")
         NexusUpload()
