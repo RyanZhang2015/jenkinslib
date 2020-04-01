@@ -58,7 +58,7 @@ def ArtifactUpdate(updateType,artifactUrl){
         //下载原始制品
         sh "  rm -fr updates && mkdir updates && cd updates && wget ${artifactUrl} && ls -l "
 
-        //获取artifactID 
+        //获取artifactID
         
         artifactUrl = artifactUrl -  "http://192.168.3.41:30010/repository/maven-snapshots/"
         artifactUrl = artifactUrl.split("/").toList()
