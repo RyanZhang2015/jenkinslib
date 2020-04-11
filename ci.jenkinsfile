@@ -6,6 +6,7 @@
 def build = new org.devops.build()
 def deploy = new org.devops.deploy()
 def tools = new org.devops.tools()
+def gitlab = new org.devops.gitlab()
 def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarqubeapi()
 def nexus = new org.devops.nexus()
