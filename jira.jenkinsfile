@@ -62,6 +62,7 @@ pipeline {
             
             steps{
                 script{
+                     println("hello")
                     //获取K8s文件
                    // response = k8s.GetDeployment("demo-uat","demoapp")
                     //response = response.content
