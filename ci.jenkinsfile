@@ -10,6 +10,7 @@ def gitlab = new org.devops.gitlab()
 def sonar = new org.devops.sonarqube()
 def sonarapi = new org.devops.sonarqubeapi()
 def nexus = new org.devops.nexus()
+def toemail = new org.devops.toemail()
 
 String buildType = "${env.buildType}"
 String buildShell = "${env.buildShell}"
@@ -84,7 +85,7 @@ pipeline{
                     
                     println(result)
                     if (result.toString() == "ERROR"){
-                        //toemail.Email("代码质量阈错误！请及时修复！",userEmail)
+                        toemail.Email("代码质量阈错误！请及时修复！",userEmail)
                         error " 代码质量阈错误！请及时修复！"        
                     } else {
                         println(result)
@@ -106,7 +107,7 @@ pipeline{
                 if ("${runOpts}" == "GitlabPush"){
                     gitlab.ChangeCommitStatus(projectId,commitSha,"success")
                 }
-               // toemail.Email("流水线成功",userEmail)
+                toemail.Email("流水线成功",userEmail)
             
             }
         
@@ -117,7 +118,7 @@ pipeline{
                 if ("${runOpts}" == "GitlabPush"){
                     gitlab.ChangeCommitStatus(projectId,commitSha,"failed")
                 }
-               // toemail.Email("流水线失败了！",userEmail)
+                toemail.Email("流水线失败了！",userEmail)
             }
         }
         
@@ -127,7 +128,7 @@ pipeline{
                 if ("${runOpts}" == "GitlabPush"){
                     gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
                 }
-               //toemail.Email("流水线被取消了！",userEmail)
+               toemail.Email("流水线被取消了！",userEmail)
             }
         
         }
