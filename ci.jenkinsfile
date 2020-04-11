@@ -17,6 +17,13 @@ String deployHosts = "${env.deployHosts}"
 String srcUrl = "${env.srcUrl}"
 String branchName = "${env.branchName}"
 
+if ("${runOpts}" == "GitlabPush"){
+    branchName = branch - "ref/heads"
+    currentBuild.description = "Trigger by ${userName} ${branch}"
+    gitlab.ChangeCommitStatus(projectId,commitSha,"running")
+    env.runOpts = "GitlabPush"
+}
+
 pipeline{
     agent{ node {label "ryan-jnlp"}}
 
@@ -26,10 +33,7 @@ pipeline{
             steps{
                 script{
 
-                    if ("${runOpts}" == "GitlabPush"){
-                        branchName = branch - "ref/heads"
 
-                    }
                     println("${branchName}")
 
                     tools.PrintMes("获取代码","green")
@@ -87,5 +91,45 @@ pipeline{
                 }
             }
         }
+    }
+    post {
+        always{
+            script{
+                println("always")
+            }
+        }
+        
+        success{
+            script{
+                println("success")
+                if ("${runOpts}" == "GitlabPush"){
+                    gitlab.ChangeCommitStatus(projectId,commitSha,"success")
+                }
+               // toemail.Email("流水线成功",userEmail)
+            
+            }
+        
+        }
+        failure{
+            script{
+                println("failure")
+                if ("${runOpts}" == "GitlabPush"){
+                    gitlab.ChangeCommitStatus(projectId,commitSha,"failed")
+                }
+               // toemail.Email("流水线失败了！",userEmail)
+            }
+        }
+        
+        aborted{
+            script{
+                println("aborted")
+                if ("${runOpts}" == "GitlabPush"){
+                    gitlab.ChangeCommitStatus(projectId,commitSha,"canceled")
+                }
+               //toemail.Email("流水线被取消了！",userEmail)
+            }
+        
+        }
+    
     }
 }
