@@ -56,7 +56,7 @@ pipeline{
                     artifactory.PushArtifact()
 
                     //上传制品
-                    nexus.main("nexus")
+                    //nexus.main("nexus")
                 }
             }
         }
