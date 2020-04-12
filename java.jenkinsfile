@@ -131,14 +131,14 @@ pipeline{
                        
                         withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
                            
-                           env.dockerImage = "ryanzhang/devopstest/${serviceName}:${branchName}"
+                           env.dockerImage = "ryanzhang/{serviceName}:${branchName}"
                            sh """
                                docker login -u ${username} -p ${password}  
-                               docker build -t ryanzhang/devopstest/${serviceName}:${branchName} .
+                               docker build -t ryanzhang/${serviceName}:${branchName} .
                                sleep 1
-                               docker push ryanzhang/devopstest/${serviceName}:${branchName}
+                               docker push ryanzhang/${serviceName}:${branchName}
                                sleep 1
-                               #docker rmi ryanzhang/devopstest/${serviceName}:${branchName}
+                               #docker rmi ryanzhang/${serviceName}:${branchName}
                             """
                         }
                     }
