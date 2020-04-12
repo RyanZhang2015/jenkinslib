@@ -38,7 +38,7 @@ def PushArtifact(){
     
     //上传制品
     env.businessName = "${env.JOB_NAME}".split("-")[0]
-    println("$(env.businessName)")
+    println("${env.businessName}")
     env.repoName = "${businessName}-${JOB_NAME.split("_")[-1].toLowerCase()}"
     println("本次制品将要上传到${repoName}仓库中!")   
     env.uploadDir = "${repoName}/${businessName}/${serviceName}/${pomVersion}"
