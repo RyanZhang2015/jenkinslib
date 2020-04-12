@@ -72,7 +72,7 @@ pipeline{
                     }
 
                     tools.PrintMes("配置项目质量规则","green")
-                    qpName="${JOB_NAME}".split("-")[0]   //Sonar%20way
+                    qpName="${JOB_NAME}".split("-")[0]   //Sonar%20way,qpName
                     sonarapi.ConfigQualityProfiles("${JOB_NAME}","java",qpName)
                 
                     tools.PrintMes("配置质量阈","green")
