@@ -50,8 +50,12 @@ pipeline{
             steps{
                 script{
                     tools.PrintMes("执行打包","green")
-                    build.Build(buildType,buildShell)
 
+                    //build.Build(buildType,buildShell)
+                    artifactory.main(buildType,buildShell)
+                    artifactory.PushArtifact()
+
+                    //上传制品
                     nexus.main("nexus")
                 }
             }
