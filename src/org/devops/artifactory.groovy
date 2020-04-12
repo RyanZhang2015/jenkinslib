@@ -3,7 +3,7 @@ package org.devops
 
 //Maven打包构建
 def MavenBuild(buildShell){
-    def server = Artifactory.newServer url: "http://192.168.1.200:30082/artifactory"
+    def server = Artifactory.newServer url: "http://192.168.3.36:30260/artifactory"
     def rtMaven = Artifactory.newMavenBuild()
     def buildInfo
     server.connection.timeout = 300
