@@ -129,16 +129,16 @@ pipeline{
                         tools.PrintMes("构建上传镜像","green")
                         env.serviceName = "${JOB_NAME}".split("_")[0]
                        
-                        withCredentials([usernamePassword(credentialsId: 'aliyun-registry-admin', passwordVariable: 'password', usernameVariable: 'username')]) {
+                        withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
                            
-                           env.dockerImage = "registry.cn-beijing.aliyuncs.com/devopstest/${serviceName}:${branchName}"
+                           env.dockerImage = "ryanzhang/devopstest/${serviceName}:${branchName}"
                            sh """
-                               docker login -u ${username} -p ${password}  registry.cn-beijing.aliyuncs.com
-                               docker build -t registry.cn-beijing.aliyuncs.com/devopstest/${serviceName}:${branchName} .
+                               docker login -u ${username} -p ${password}  
+                               docker build -t ryanzhang/devopstest/${serviceName}:${branchName} .
                                sleep 1
-                               docker push registry.cn-beijing.aliyuncs.com/devopstest/${serviceName}:${branchName}
+                               docker push ryanzhang/devopstest/${serviceName}:${branchName}
                                sleep 1
-                               #docker rmi registry.cn-beijing.aliyuncs.com/devopstest/${serviceName}:${branchName}
+                               #docker rmi ryanzhang/devopstest/${serviceName}:${branchName}
                             """
                         }
                     }
