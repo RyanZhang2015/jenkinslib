@@ -156,7 +156,7 @@ pipeline{
                     //下载版本库文件 
                     
                     releaseVersion = "${branchName}".split("-")[-1]
-                    response = gitlab.GetRepoFile(7,"demo-uat%2f${releaseVersion}-uat.yaml")
+                    response = gitlab.GetRepoFile(4,"demo-uat%2f${releaseVersion}-uat.yaml")
                     //println(response)
                     
                     //替换文件中内容（镜像）
