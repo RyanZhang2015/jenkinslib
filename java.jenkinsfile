@@ -174,7 +174,7 @@ pipeline{
                     
                     //更新gitlab文件内容
                     base64Content = response.bytes.encodeBase64().toString()
-                    gitlab.UpdateRepoFile(7,"demo-uat%2f${releaseVersion}-uat.yaml",base64Content)
+                    gitlab.UpdateRepoFile(4,"demo-uat%2f${releaseVersion}-uat.yaml",base64Content)
                     
                     //发布kubernetes
                     k8s.UpdateDeployment("demo-uat","demoapp",response)
