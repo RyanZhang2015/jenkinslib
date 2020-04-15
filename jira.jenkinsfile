@@ -168,6 +168,7 @@ pipeline {
                         try {
                             projectId = gitlab.GetProjectID(repoName, projectName)
                             println(projectId)
+                            println(projectName)
                             projectIds.add(projectId)   
                         } catch(e){
                             println(e)
