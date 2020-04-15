@@ -165,6 +165,7 @@ pipeline {
                         currentBuild.description += "\n project: ${projectName}"
                         repoName = projectName.split("-")[0]
                         println("${repoName}是repo名称")
+                        println("${projectName}是projectName")
                         
                         try {
                             projectId = gitlab.GetProjectID(repoName, projectName)
