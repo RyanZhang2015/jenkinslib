@@ -58,6 +58,7 @@ def GetProjectID(repoName='',projectName){
     
     for (repo in result){
        // println(repo['path_with_namespace'])
+        println("${repo['path']}是path")
         if (repo['path'] == "${projectName}"){
             
             repoId = repo['id']
