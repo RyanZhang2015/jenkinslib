@@ -178,7 +178,7 @@ pipeline{
                     gitlab.UpdateRepoFile(4,"demo-uat%2f${releaseVersion}-uat.yaml",base64Content)
                     
                     //发布kubernetes
-                    //k8s.UpdateDeployment("demo-uat","demoapp",response)
+                    k8s.UpdateDeployment("demo-uat","demoapp",response)
                     
 
                 }
