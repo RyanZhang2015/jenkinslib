@@ -157,7 +157,7 @@ pipeline{
                     
                     releaseVersion = "${branchName}".split("-")[-1]
                     response = gitlab.GetRepoFile(4,"demo-uat%2f${releaseVersion}-uat.yaml")
-                    println(response)
+                    //println(response)
                     
                     //替换文件中内容（镜像）
                     fileData = readYaml text: """${response}"""
@@ -167,6 +167,7 @@ pipeline{
                     oldVersion = fileData["metadata"]["resourceVersion"]
                     oldUid = fileData["metadata"]["uid"]
                     response = response.replace(oldImage,dockerImage)
+                    println(response)
                     response = response.replace(oldVersion,"")
                     response = response.replace(oldUid,"")
                    
