@@ -131,7 +131,7 @@ pipeline{
                        
                         withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
                            
-                           env.dockerImage = "ryanzhang/{serviceName}:${branchName}"
+                           env.dockerImage = "ryanzhang/${serviceName}:${branchName}"
                            sh """
                                docker login -u ${username} -p ${password}  
                                docker build -t ryanzhang/${serviceName}:${branchName} .
@@ -165,12 +165,12 @@ pipeline{
                     println(fileData["metadata"]["resourceVersion"])
                     oldImage = fileData["spec"]["template"]["spec"]["containers"][0]["image"] 
                     println("oldImage is ${oldImage}")
-                    //oldVersion = fileData["metadata"]["resourceVersion"]
-                    //oldUid = fileData["metadata"]["uid"]
+                    oldVersion = fileData["metadata"]["resourceVersion"]
+                    oldUid = fileData["metadata"]["uid"]
                     response = response.replace(oldImage,dockerImage)
                     //println(response)
-                    //response = response.replace(oldVersion,"")
-                    //response = response.replace(oldUid,"")
+                    response = response.replace(oldVersion,"")
+                    response = response.replace(oldUid,"")
                    
                     println(response)
                     
