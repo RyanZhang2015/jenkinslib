@@ -164,12 +164,13 @@ pipeline{
                     println(fileData["spec"]["template"]["spec"]["containers"][0]["image"])
                     println(fileData["metadata"]["resourceVersion"])
                     oldImage = fileData["spec"]["template"]["spec"]["containers"][0]["image"] 
-                    oldVersion = fileData["metadata"]["resourceVersion"]
-                    oldUid = fileData["metadata"]["uid"]
+                    println("oldImage is ${oldImage}")
+                    //oldVersion = fileData["metadata"]["resourceVersion"]
+                    //oldUid = fileData["metadata"]["uid"]
                     response = response.replace(oldImage,dockerImage)
-                    println(response)
-                    response = response.replace(oldVersion,"")
-                    response = response.replace(oldUid,"")
+                    //println(response)
+                    //response = response.replace(oldVersion,"")
+                    //response = response.replace(oldUid,"")
                    
                     println(response)
                     
