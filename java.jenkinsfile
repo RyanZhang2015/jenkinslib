@@ -168,8 +168,8 @@ pipeline{
                     oldVersion = fileData["metadata"]["resourceVersion"]
                     oldUid = fileData["metadata"]["uid"]
                     response = response.replace(oldImage,dockerImage)
-                    response = response.replace(oldVersion,"")
-                    response = response.replace(oldUid,"")
+                    //response = response.replace(oldVersion,"")
+                    //response = response.replace(oldUid,"")
                    
                     println(response)
                     
