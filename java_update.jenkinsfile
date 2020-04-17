@@ -1,6 +1,6 @@
 #!groovy 
 
-@Library("jenkinslibrary@master") _ 
+@Library("jenkinslib@master") _ 
 
 String updateType = "${env.updateType}"
 String releaseVersion = "${env.releaseVersion}"
