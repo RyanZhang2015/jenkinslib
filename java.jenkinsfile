@@ -138,7 +138,7 @@ pipeline{
                                sleep 1
                                docker push ryanzhang/${serviceName}:${branchName}
                                sleep 1
-                               #docker rmi ryanzhang/${serviceName}:${branchName}
+                               docker rmi ryanzhang/${serviceName}:${branchName}
                             """
                         }
                     }
