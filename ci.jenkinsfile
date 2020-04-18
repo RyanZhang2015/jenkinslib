@@ -20,7 +20,7 @@ String srcUrl = "${env.srcUrl}"
 String branchName = "${env.branchName}"
 
 if ("${runOpts}" == "GitlabPush"){
-    branchName = branch - "ref/heads"
+    branchName = branch - "refs/heads"
     currentBuild.description = "Trigger by ${userName} ${branch}"
     gitlab.ChangeCommitStatus(projectId,commitSha,"running")
     env.runOpts = "GitlabPush"
