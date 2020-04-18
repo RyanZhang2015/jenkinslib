@@ -166,14 +166,14 @@ pipeline{
                     
                     writeFile file: 'k8stemplate.yaml', text: """${sourceData}"""
                     
-                    
+                    /*
                     sh """
                         #cat k8stemplate.yaml
                         kubectl apply -f k8stemplate.yaml
                     """
-                    
+                    */
                     //发布应用
-                    //k8s.UpdateDeployment("demo-uat","npmdemo",sourceData)
+                    k8s.UpdateDeployment("demo-uat","npmdemo",sourceData)
     
                 }
             }
