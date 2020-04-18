@@ -13,6 +13,7 @@ def sonarapi = new org.devops.sonarqubeapi()
 def nexus = new org.devops.nexus()
 def artifactory = new org.devops.artifactory() 
 def k8s = new org.devops.kubernetes()
+def toemail = new org.devops.toemail()
 
 def runOpts
 //env
@@ -25,8 +26,8 @@ String artifactUrl = "${env.artifactUrl}"
 
 
 if ("${runOpts}" == "GitlabPush"){
-    branchName = branch - "refs/heads/"
-     println("${branchName}")
+    branchName = branch - "ref/heads"
+    println("${branchName}")
     
     currentBuild.description = "Trigger by ${userName} ${branch}"
     gitlab.ChangeCommitStatus(projectId,commitSha,"running")
