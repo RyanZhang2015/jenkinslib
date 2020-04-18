@@ -35,12 +35,8 @@ if ("${runOpts}" == "GitlabPush"){
     branchName = branch - "ref/heads"
     currentBuild.description = "Trigger by ${userName} ${branch}"
     gitlab.ChangeCommitStatus(projectId,commitSha,"running")
-    env.runOpts = "GitlabPush"
-    
-} else {
-   userEmail = "ryan.zhang@qima.com"
+    env.runOpts = "GitlabPush"   
 }
-
 
 //pipeline
 pipeline{
