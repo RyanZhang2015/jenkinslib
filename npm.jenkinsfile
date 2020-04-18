@@ -173,7 +173,7 @@ pipeline{
                     """
                     */
                     //发布应用
-                    k8s.CreateDeployment("demo-uat","demonpm","k8stemplate.yaml")
+                    k8s.CreateDeployment("demo-uat","demonpm",sourceData)
     
                 }
             }
