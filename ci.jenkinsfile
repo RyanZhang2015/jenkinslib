@@ -16,7 +16,6 @@ def artifactory = new org.devops.artifactory()
 String buildType = "${env.buildType}"
 String buildShell = "${env.buildShell}"
 String deployHosts = "${env.deployHosts}"
-
 String srcUrl = "${env.srcUrl}"
 String branchName = "${env.branchName}"
 
