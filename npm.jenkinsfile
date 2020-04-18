@@ -124,7 +124,7 @@ pipeline{
                             tools.PrintMes("构建上传镜像","green")
                             env.serviceName = "${JOB_NAME}".split("_")[0]
                            
-                            withCredentials([usernamePassword(credentialsId: 'aliyun-registry-admin', passwordVariable: 'password', usernameVariable: 'username')]) {
+                            withCredentials([usernamePassword(credentialsId: 'DockerHu', passwordVariable: 'password', usernameVariable: 'username')]) {
                                
                                env.dockerImage = "ryanzhang/${serviceName}:${branchName}"
                                sh """
