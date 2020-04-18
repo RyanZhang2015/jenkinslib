@@ -2,7 +2,7 @@
 
 @Library('jenkinslib@master') _
 
-//func from libbrary
+func from libbrary
 def build = new org.devops.build()
 def deploy = new org.devops.deploy()
 def tools = new org.devops.tools()
