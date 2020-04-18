@@ -15,7 +15,7 @@ def artifactory = new org.devops.artifactory()
 def k8s = new org.devops.kubernetes()
 
 
-//def runOpts
+def runOpts
 //env
 String buildType = "${env.buildType}"
 String buildShell = "${env.buildShell}"
