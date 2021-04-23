@@ -60,8 +60,8 @@ pipeline{
             steps{
                 script{
                     tools.PrintMes("执行打包","green")
-                    artifactory.main(buildType,buildShell)
-                    artifactory.PushArtifact()
+                    // artifactory.main(buildType,buildShell)
+                    // artifactory.PushArtifact()
                                
                     //deploy.SaltDeploy("${deployHosts}","test.ping")
                     //deploy.AnsibleDeploy("${deployHosts}","-m ping ")
