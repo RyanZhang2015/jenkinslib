@@ -69,18 +69,12 @@ pipeline{
                 steps{
                     script{
                         tools.PrintMes("构建上传镜像","green")
-                        env.serviceName = "${JOB_NAME}".split("_")[0]
+                        
                        
                         withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
                            
-                           env.dockerImage = "ryanzhang/${serviceName}:${branchName}"
                            sh """
-                               docker login -u ${username} -p ${password}  
-                               docker build -t ryanzhang/${serviceName}:${branchName} .
-                               sleep 1
-                               docker push ryanzhang/${serviceName}:${branchName}
-                               sleep 1
-                               docker rmi ryanzhang/${serviceName}:${branchName}
+                               aws cli --version
                             """
                         }
                     }
