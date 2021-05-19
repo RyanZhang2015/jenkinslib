@@ -69,15 +69,17 @@ pipeline{
             steps{
                 script(
                     tool.PrintMes("Build Images and Push to ECR", "green")
-                    
-                    //withDockerRegistry(credentialsId: 'ecr', url: '141816850656.dkr.ecr.ap-southeast-1.amazonaws.com/tomcat') {
-                    
-                       sh """
-                           aws --version
-                           docker --version
-                        
-                          """
-
+                    withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
+                           
+                           env.dockerImage = "ryanzhang/${serviceName}:${branchName}"
+                           sh """
+                               docker login -u ${username} -p ${password}  
+                               docker build -t ryanzhang/${serviceName}:${branchName} .
+                               sleep 1
+                               docker push ryanzhang/${serviceName}:${branchName}
+                               sleep 1
+                               docker rmi ryanzhang/${serviceName}:${branchName}
+                            """
                     }
                 )
             }
