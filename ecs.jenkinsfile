@@ -65,11 +65,13 @@ pipeline{
                 }
             }
         }
-        stage("BuildImage"){
-            steps{
-                script(
-                    tool.PrintMes("Build Images and Push to ECR", "green")
-                    withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
+        stage("BuildImages"){
+                steps{
+                    script{
+                        tools.PrintMes("构建上传镜像","green")
+                        env.serviceName = "${JOB_NAME}".split("_")[0]
+                       
+                        withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
                            
                            env.dockerImage = "ryanzhang/${serviceName}:${branchName}"
                            sh """
@@ -80,10 +82,11 @@ pipeline{
                                sleep 1
                                docker rmi ryanzhang/${serviceName}:${branchName}
                             """
+                        }
                     }
-                )
+                }
             }
-        }
+        
 
        
     }
