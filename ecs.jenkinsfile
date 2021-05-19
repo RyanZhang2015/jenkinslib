@@ -70,7 +70,8 @@ pipeline{
                 script(
                     tool.PrintMes("Build Images and Push to ECR", "green")
                     
-                    withDockerRegistry(credentialsId: 'ecr', url: '141816850656.dkr.ecr.ap-southeast-1.amazonaws.com/tomcat') {
+                    //withDockerRegistry(credentialsId: 'ecr', url: '141816850656.dkr.ecr.ap-southeast-1.amazonaws.com/tomcat') {
+                    withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'username')]) {
                        sh """
                            aws --version
                            docker --version
