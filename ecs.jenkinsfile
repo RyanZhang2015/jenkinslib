@@ -99,9 +99,7 @@ pipeline{
         failure{
             script{
                 println("failure")
-                if ("${runOpts}" == "GitlabPush"){
-                    gitlab.ChangeCommitStatus(projectId,commitSha,"failed")
-                }
+                
                 toemail.Email("流水线失败了！",userEmail)
             }
         }
