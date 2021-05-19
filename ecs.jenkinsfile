@@ -19,12 +19,6 @@ String deployHosts = "${env.deployHosts}"
 String srcUrl = "${env.srcUrl}"
 String branchName = "${env.branchName}"
 
-if ("${runOpts}" == "GitlabPush"){
-    branchName = branch - "refs/heads/"
-    currentBuild.description = "Trigger by ${userName} ${branch}"
-    gitlab.ChangeCommitStatus(projectId,commitSha,"running")
-    env.runOpts = "GitlabPush"
-}
 
 pipeline{
     agent{ node {label "ryan-jnlp"}}
